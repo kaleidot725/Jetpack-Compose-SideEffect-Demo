@@ -20,23 +20,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import jp.kaleidot725.sample.ui.theme.SampleTheme
 import kotlinx.coroutines.delay
 
 @Composable
-fun Toggle() {
+fun LaunchedEffectSampleCounter() {
     val context = LocalContext.current
-    var state by remember { mutableStateOf(false) }
-
-    if (state) {
-        LaunchedEffect(Unit) {
-            Toast.makeText(context, "start $state", Toast.LENGTH_SHORT).show()
-
-            delay(5000)
-
-            Toast.makeText(context, "end $state", Toast.LENGTH_SHORT).show()
-        }
-    }
+    var count by remember { mutableStateOf(0) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -44,26 +33,41 @@ fun Toggle() {
                 .wrapContentSize()
                 .align(Alignment.Center)
         ) {
+            LaunchedEffect(count) {
+                Toast.makeText(context, "start $count", Toast.LENGTH_SHORT).show()
+
+                delay(5000)
+
+                Toast.makeText(context, "end $count", Toast.LENGTH_SHORT).show()
+            }
             Text(
-                text = state.toString(),
+                text = count.toString(),
                 style = MaterialTheme.typography.h1,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Button(
-                onClick = { state = true },
+                onClick = { count += 1 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Text(text = "TRUE")
+                Text(text = "INCREMENT")
             }
             Button(
-                onClick = { state = false },
+                onClick = { count -= 1 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Text(text = "FALSE")
+                Text(text = "DECREMENT")
+            }
+            Button(
+                onClick = { count = 0 },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(text = "ZERO CLEAR")
             }
         }
     }

@@ -20,12 +20,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import jp.kaleidot725.sample.ui.theme.SampleTheme
 import kotlinx.coroutines.delay
 
 @Composable
-fun Counter() {
+fun LaunchedEffectSampleToggle() {
     val context = LocalContext.current
-    var count by remember { mutableStateOf(0) }
+    var state by remember { mutableStateOf(false) }
+
+    if (state) {
+        LaunchedEffect(Unit) {
+            Toast.makeText(context, "start $state", Toast.LENGTH_SHORT).show()
+
+            delay(5000)
+
+            Toast.makeText(context, "end $state", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -33,41 +44,26 @@ fun Counter() {
                 .wrapContentSize()
                 .align(Alignment.Center)
         ) {
-            LaunchedEffect(count) {
-                Toast.makeText(context, "start $count", Toast.LENGTH_SHORT).show()
-
-                delay(5000)
-
-                Toast.makeText(context, "end $count", Toast.LENGTH_SHORT).show()
-            }
             Text(
-                text = count.toString(),
+                text = state.toString(),
                 style = MaterialTheme.typography.h1,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Button(
-                onClick = { count += 1 },
+                onClick = { state = true },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Text(text = "INCREMENT")
+                Text(text = "TRUE")
             }
             Button(
-                onClick = { count -= 1 },
+                onClick = { state = false },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Text(text = "DECREMENT")
-            }
-            Button(
-                onClick = { count = 0 },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(text = "ZERO CLEAR")
+                Text(text = "FALSE")
             }
         }
     }

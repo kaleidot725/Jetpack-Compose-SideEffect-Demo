@@ -26,12 +26,18 @@ sealed class Screen(val route: String, val title: String) {
         title = "Remember Coroutine Scope Sample"
     )
 
+    object RememberUpdateState: Screen(
+        route = "rememberUpdateState",
+        title = "Remember Update State Sample"
+    )
+
     companion object {
         val SAMPLE_SCREENS = listOf(
             LaunchedEffectCounter,
             LaunchedEffectToggle,
             DisposableEffect,
-            RememberCoroutineScope
+            RememberCoroutineScope,
+            RememberUpdateState
         )
     }
 }

@@ -31,13 +31,19 @@ sealed class Screen(val route: String, val title: String) {
         title = "Remember Update State Sample"
     )
 
+    object SideEffect: Screen (
+        route = "sideEffect",
+        title = "Side Effect Sample"
+    )
+
     companion object {
         val SAMPLE_SCREENS = listOf(
             LaunchedEffectCounter,
             LaunchedEffectToggle,
             DisposableEffect,
             RememberCoroutineScope,
-            RememberUpdateState
+            RememberUpdateState,
+            SideEffect
         )
     }
 }

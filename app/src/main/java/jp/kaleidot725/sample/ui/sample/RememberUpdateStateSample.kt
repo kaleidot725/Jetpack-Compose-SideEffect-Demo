@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-
 @Composable
 fun RememberUpdateStateSample() {
     var unconfirmedValue by remember { mutableStateOf(Random.nextInt()) }

@@ -23,6 +23,7 @@ import jp.kaleidot725.sample.ui.navigation.Screen
 import jp.kaleidot725.sample.ui.sample.DisposableEffectSample
 import jp.kaleidot725.sample.ui.sample.RememberCoroutineScopeSample
 import jp.kaleidot725.sample.ui.sample.RememberUpdateStateSample
+import jp.kaleidot725.sample.ui.sample.SideEffectSample
 import jp.kaleidot725.sample.ui.theme.SampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,6 +50,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Screen.RememberUpdateState.route) {
                         RememberUpdateStateSample()
+                    }
+                    composable(Screen.SideEffect.route) {
+                        SideEffectSample()
                     }
                 }
             }

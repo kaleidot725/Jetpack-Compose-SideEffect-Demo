@@ -36,6 +36,11 @@ sealed class Screen(val route: String, val title: String) {
         title = "Side Effect Sample"
     )
 
+    object DerivedStateOfSample: Screen(
+        route = "derivedStateOf",
+        title = "Derived State Of Sample"
+    )
+
     companion object {
         val SAMPLE_SCREENS = listOf(
             LaunchedEffectCounter,
@@ -43,7 +48,8 @@ sealed class Screen(val route: String, val title: String) {
             DisposableEffect,
             RememberCoroutineScope,
             RememberUpdateState,
-            SideEffect
+            SideEffect,
+            DerivedStateOfSample
         )
     }
 }

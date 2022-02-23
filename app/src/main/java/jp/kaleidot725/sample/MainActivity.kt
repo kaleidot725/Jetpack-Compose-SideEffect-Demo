@@ -20,10 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import jp.kaleidot725.sample.ui.navigation.Screen
-import jp.kaleidot725.sample.ui.sample.DisposableEffectSample
-import jp.kaleidot725.sample.ui.sample.RememberCoroutineScopeSample
-import jp.kaleidot725.sample.ui.sample.RememberUpdateStateSample
-import jp.kaleidot725.sample.ui.sample.SideEffectSample
+import jp.kaleidot725.sample.ui.sample.*
 import jp.kaleidot725.sample.ui.theme.SampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,6 +50,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Screen.SideEffect.route) {
                         SideEffectSample()
+                    }
+                    composable(Screen.DerivedStateOfSample.route) {
+                        DerivedStateOfSample()
                     }
                 }
             }

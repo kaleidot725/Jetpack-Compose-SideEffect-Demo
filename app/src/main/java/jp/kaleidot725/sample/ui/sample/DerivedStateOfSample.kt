@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import jp.kaleidot725.sample.ui.sample.News.Companion.SAMPLES
 import java.util.*
@@ -36,28 +37,22 @@ private data class News(
 }
 
 @Composable
-private fun NewsCard(news: News, modifier: Modifier = Modifier, onChangePinneStatus: () -> Unit) {
+private fun NewsCard(news: News, onChangeStatus: () -> Unit, modifier: Modifier = Modifier) {
     Card(modifier) {
         Column {
             Text(text = news.title)
             Text(text = news.content)
-            Button(onClick = { onChangePinneStatus() }, modifier = Modifier.fillMaxWidth()) {
+            Button(onClick = { onChangeStatus() }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = if (news.pinned) "UNPIN" else "PIN")
             }
         }
     }
 }
 
-private fun updatePinnedStatus(news: News, pinned: Boolean, newsList: List<News>): List<News> {
-    return buildList {
-        addAll(newsList)
-
-        val index = newsList.indexOf(news)
-        val newNews = news.copy(pinned = pinned)
-
-        remove(news)
-        add(index, newNews)
-    }
+@Preview
+@Composable
+private fun NewsCard_Preview() {
+    NewsCard(news = SAMPLES.first(), onChangeStatus = {}, modifier = Modifier.fillMaxSize())
 }
 
 @Composable
@@ -130,13 +125,20 @@ private fun NewsList(refreshTime: Long, filterType: FilterType) {
         items(filteredList) { news ->
             NewsCard(
                 news = news,
+                onChangeStatus = {
+                    newsList = buildList {
+                        addAll(newsList)
+                        val index = newsList.indexOf(news)
+                        val newNews = news.copy(pinned = !news.pinned)
+                        remove(news)
+                        add(index, newNews)
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
                     .padding(horizontal = 4.dp)
-            ) {
-                newsList = updatePinnedStatus(news, !news.pinned, newsList)
-            }
+            )
         }
     }
 }

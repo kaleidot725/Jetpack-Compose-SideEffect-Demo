@@ -54,6 +54,9 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.DerivedStateOfSample.route) {
                         DerivedStateOfSample()
                     }
+                    composable(Screen.SnapshotFlowSample.route) {
+                        SnapshotFlowSample()
+                    }
                 }
             }
         }

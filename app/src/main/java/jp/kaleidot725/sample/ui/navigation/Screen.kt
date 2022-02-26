@@ -41,6 +41,11 @@ sealed class Screen(val route: String, val title: String) {
         title = "Derived State Of Sample"
     )
 
+    object SnapshotFlowSample: Screen(
+        route = "snapshotFlow",
+        title = "Snapshot Flow Sample"
+    )
+
     companion object {
         val SAMPLE_SCREENS = listOf(
             LaunchedEffectCounter,
@@ -49,7 +54,8 @@ sealed class Screen(val route: String, val title: String) {
             RememberCoroutineScope,
             RememberUpdateState,
             SideEffect,
-            DerivedStateOfSample
+            DerivedStateOfSample,
+            SnapshotFlowSample
         )
     }
 }

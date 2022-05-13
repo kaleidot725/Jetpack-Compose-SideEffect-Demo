@@ -1,12 +1,7 @@
 package jp.kaleidot725.sample
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -31,9 +26,7 @@ fun LaunchedEffectSampleToggle() {
     if (state) {
         LaunchedEffect(Unit) {
             Toast.makeText(context, "start $state", Toast.LENGTH_SHORT).show()
-
             delay(5000)
-
             Toast.makeText(context, "end $state", Toast.LENGTH_SHORT).show()
         }
     }
@@ -42,27 +35,18 @@ fun LaunchedEffectSampleToggle() {
         Column(
             modifier = Modifier
                 .wrapContentSize()
-                .align(Alignment.Center)
+                .align(Alignment.Center),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
                 text = state.toString(),
                 style = MaterialTheme.typography.h1,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
-            Button(
-                onClick = { state = true },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
+            Button(onClick = { state = true }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "TRUE")
             }
-            Button(
-                onClick = { state = false },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
+            Button(onClick = { state = false }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "FALSE")
             }
         }

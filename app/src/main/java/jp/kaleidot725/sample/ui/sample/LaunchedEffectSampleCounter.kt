@@ -1,12 +1,7 @@
 package jp.kaleidot725.sample
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -29,9 +24,8 @@ fun LaunchedEffectSampleCounter() {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier
-                .wrapContentSize()
-                .align(Alignment.Center)
+            modifier = Modifier.wrapContentSize().align(Alignment.Center),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             LaunchedEffect(count) {
                 Toast.makeText(context, "start $count", Toast.LENGTH_SHORT).show()
@@ -45,28 +39,13 @@ fun LaunchedEffectSampleCounter() {
                 style = MaterialTheme.typography.h1,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
-            Button(
-                onClick = { count += 1 },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
+            Button(onClick = { count += 1 }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "INCREMENT")
             }
-            Button(
-                onClick = { count -= 1 },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
+            Button(onClick = { count -= 1 }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "DECREMENT")
             }
-            Button(
-                onClick = { count = 0 },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
+            Button(onClick = { count = 0 }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "ZERO CLEAR")
             }
         }

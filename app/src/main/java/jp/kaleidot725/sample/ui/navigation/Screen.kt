@@ -16,9 +16,14 @@ sealed class Screen(val route: String, val title: String) {
         title = "Launched Effect Sample (Toggle)"
     )
 
-    object DisposableEffect : Screen(
-        route = "disposableEffect",
-        title = "Disposable Effect Sample"
+    object DisposableEffectToggle : Screen(
+        route = "disposableEffectToggle",
+        title = "Disposable Effect Sample（Toggle）"
+    )
+
+    object DisposableEffectCounter : Screen(
+        route = "disposableEffectCounter",
+        title = "Disposable Effect Sample（Counter）"
     )
 
     object RememberCoroutineScope : Screen(
@@ -50,7 +55,8 @@ sealed class Screen(val route: String, val title: String) {
         val SAMPLE_SCREENS = listOf(
             LaunchedEffectCounter,
             LaunchedEffectToggle,
-            DisposableEffect,
+            DisposableEffectToggle,
+            DisposableEffectCounter,
             RememberCoroutineScope,
             RememberUpdateState,
             SideEffect,

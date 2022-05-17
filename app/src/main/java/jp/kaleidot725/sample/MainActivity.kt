@@ -39,8 +39,11 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.LaunchedEffectToggle.route) {
                         LaunchedEffectSampleToggle()
                     }
-                    composable(Screen.DisposableEffect.route) {
+                    composable(Screen.DisposableEffectToggle.route) {
                         DisposableEffectSampleToggle()
+                    }
+                    composable(Screen.DisposableEffectCounter.route) {
+                        DisposableEffectSampleCounter()
                     }
                     composable(Screen.RememberCoroutineScope.route) {
                         RememberCoroutineScopeSample()

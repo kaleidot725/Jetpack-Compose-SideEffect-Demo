@@ -45,8 +45,11 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.DisposableEffectRefresh.route) {
                         DisposableEffectSampleRefresh()
                     }
-                    composable(Screen.RememberCoroutineScope.route) {
-                        RememberCoroutineScopeSample()
+                    composable(Screen.RememberCoroutineScopeLaunch.route) {
+                        RememberCoroutineScopeLaunchSample()
+                    }
+                    composable(Screen.RememberCoroutineScopeCancel.route) {
+                        RememberCoroutineScopeCancelSample()
                     }
                     composable(Screen.RememberUpdateState.route) {
                         RememberUpdateStateSample()

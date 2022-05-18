@@ -26,27 +26,32 @@ sealed class Screen(val route: String, val title: String) {
         title = "Disposable Effect Sample（Refresh）"
     )
 
-    object RememberCoroutineScope : Screen(
-        route = "rememberCoroutineScope",
-        title = "Remember Coroutine Scope Sample"
+    object RememberCoroutineScopeLaunch : Screen(
+        route = "rememberCoroutineScopeLaunch",
+        title = "Remember Coroutine Scope Launch Sample"
     )
 
-    object RememberUpdateState: Screen(
+    object RememberCoroutineScopeCancel : Screen(
+        route = "rememberCoroutineScopeCancel",
+        title = "Remember Coroutine Scope Cancel Sample"
+    )
+
+    object RememberUpdateState : Screen(
         route = "rememberUpdateState",
         title = "Remember Update State Sample"
     )
 
-    object SideEffect: Screen (
+    object SideEffect : Screen(
         route = "sideEffect",
         title = "Side Effect Sample"
     )
 
-    object DerivedStateOfSample: Screen(
+    object DerivedStateOfSample : Screen(
         route = "derivedStateOf",
         title = "Derived State Of Sample"
     )
 
-    object SnapshotFlowSample: Screen(
+    object SnapshotFlowSample : Screen(
         route = "snapshotFlow",
         title = "Snapshot Flow Sample"
     )
@@ -57,7 +62,8 @@ sealed class Screen(val route: String, val title: String) {
             LaunchedEffectToggle,
             DisposableEffectToggle,
             DisposableEffectRefresh,
-            RememberCoroutineScope,
+            RememberCoroutineScopeLaunch,
+            RememberCoroutineScopeCancel,
             RememberUpdateState,
             SideEffect,
             DerivedStateOfSample,

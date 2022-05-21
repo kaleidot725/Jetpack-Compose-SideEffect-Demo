@@ -31,11 +31,6 @@ sealed class Screen(val route: String, val title: String) {
         title = "Remember Coroutine Scope Launch Sample"
     )
 
-    object RememberCoroutineScopeCancel : Screen(
-        route = "rememberCoroutineScopeCancel",
-        title = "Remember Coroutine Scope Cancel Sample"
-    )
-
     object RememberUpdateState : Screen(
         route = "rememberUpdateState",
         title = "Remember Update State Sample"
@@ -63,7 +58,6 @@ sealed class Screen(val route: String, val title: String) {
             DisposableEffectToggle,
             DisposableEffectRefresh,
             RememberCoroutineScopeLaunch,
-            RememberCoroutineScopeCancel,
             RememberUpdateState,
             SideEffect,
             DerivedStateOfSample,

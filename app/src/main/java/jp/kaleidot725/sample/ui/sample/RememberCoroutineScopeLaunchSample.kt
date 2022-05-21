@@ -15,6 +15,22 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun RememberCoroutineScopeLaunchSample() {
+    var enable by remember { mutableStateOf(true) }
+    Column(
+        modifier = Modifier.wrapContentSize(), verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Button(
+            onClick = { enable = !enable }, modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = if (enable) "DISABLE COUNTER" else "ENABLED COUNTER")
+        }
+
+        if (enable) Counter()
+    }
+}
+
+@Composable
+private fun Counter() {
     var count by remember { mutableStateOf(0f) }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current

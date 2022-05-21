@@ -48,9 +48,6 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.RememberCoroutineScopeLaunch.route) {
                         RememberCoroutineScopeLaunchSample()
                     }
-                    composable(Screen.RememberCoroutineScopeCancel.route) {
-                        RememberCoroutineScopeCancelSample()
-                    }
                     composable(Screen.RememberUpdateState.route) {
                         RememberUpdateStateSample()
                     }

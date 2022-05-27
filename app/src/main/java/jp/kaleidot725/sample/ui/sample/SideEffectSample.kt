@@ -1,60 +1,44 @@
 package jp.kaleidot725.sample.ui.sample
 
-import android.util.Log
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import android.widget.Toast
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-
-object Logger {
-    var user: String = "UNKNOWN"
-
-    fun write(message: String) {
-        Log.v("TEST", "$message $user")
-    }
-}
-
-@Composable
-fun rememberLogger(userName: String): Logger {
-    val logger: Logger = remember { Logger }
-    SideEffect {
-        logger.user = userName
-    }
-    return logger
-}
-
-private val Users = listOf(
-    "ONE",
-    "TWO",
-    "THREE",
-    "FOUR"
-)
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import java.util.*
 
 @Composable
 fun SideEffectSample() {
-    var user by remember { mutableStateOf(Users.random()) }
-    val logger = rememberLogger(userName = user)
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.align(Alignment.Center)) {
-            Text(text = "Side Effect Sample")
-            Text(text = "User $user")
-            Button(onClick = {
-                logger.write("Change User")
-                user = Users.random()
-            }) {
-                Text(text = "Change User")
-            }
-            Button(onClick = {
-                logger.write("Execute Action")
-            }) {
-                Text(text = "Execute Action")
-            }
+    var refreshTime by remember { mutableStateOf(Date().time) }
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        RefreshTimeText(timeText = refreshTime.toString())
+        Button(
+            onClick = { refreshTime = Date().time },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "REFRESH")
         }
+    }
+}
+
+@Composable
+fun RefreshTimeText(timeText: String) {
+    val context = LocalContext.current
+
+    SideEffect {
+        Toast.makeText(context, "RefreshTime $timeText", Toast.LENGTH_SHORT).show()
+    }
+
+    Column {
+        Text(text = "REFRESH TIME", style = MaterialTheme.typography.h5)
+        Text(text = timeText, style = MaterialTheme.typography.h5)
     }
 }
 

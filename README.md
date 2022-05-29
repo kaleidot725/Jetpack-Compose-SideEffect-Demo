@@ -1,5 +1,7 @@
 # サンプルで理解するJetpack Composeの副作用の仕組み サンプル集
 
+## 本リポジトリについて
+
 本リポジトリは書籍「サンプルで理解するJetpack Composeの副作用の仕組み」で紹介しているサンプルをまとめているリポジトリになります。
 
 <img src="./cover.png" width="300" style="display: block; margin: 40px">
@@ -14,6 +16,8 @@
 | Chapter6 | [SideEffect](https://zenn.dev/kaleidot725/books/jetpack-compose-sideeffect-samples/viewer/5-jc-side-effect) |
 | Chapter7 | [derivedStateOf](https://zenn.dev/kaleidot725/books/jetpack-compose-sideeffect-samples/viewer/6-jc-derive-state-of) |
 | Chapter8 | [snapshotFlow](https://zenn.dev/kaleidot725/books/jetpack-compose-sideeffect-samples/viewer/7-jc-snapshot-flow) |
+
+## 問い合わせ
 
 本リポジトリのサンプルに関して誤りがある場合は本リポジトリのIssueまたは下記の問い合わせフォームに記載ください。
 
